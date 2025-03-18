@@ -1,50 +1,42 @@
 import { useState } from "react";
 import "./App.css";
+import  iphone from "./images/iphone-1.avif"
+import iphone2 from"./images/iphone-2.avif"
+import iphone3 from"./images/iphone-3.avif"
+import watch1 from"./images/watch-1.avif"
+import watch2 from"./images/watch-2.avif"
+import watch3 from"./images/watch-3.avif"
+import airpords1 from"./images/airpords-1.avif"
+import airpords2 from"./images/airpords-2.avif"
+import airpords3 from"./images/airpords-3.avif"
+import mac1 from "./images/mac-1.avif"
+import mac2 from "./images/mac-2.avif"
+import mac3 from "./images/mac-3.avif"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const products = [
   {
     id: 1,
     name: "iPhone 15 pro",
-    price: "1,44,900",
+    price: "79,500",
     category: "iPhone",
-    image: "",
-  },
-   {
-    id: 2,
-    name: "iPhone 16 pro",
-    price: "1,44,900",
-    category: "iPhone",
-    image: "/watch-3.avif",
-  },
-   {
-    id: 3,
-    name: "iPhone 12 pro",
-    price: "1,44,900",
-    category: "iPhone",
-    image: "/watch-3.avif",
-  },
-  {
-    id: 4,
-    name: "Apple Watch Series 9",
-    price: "41,999",
-    category: "Watch",
-    image: "/images/applewatch9.jpg",
+    image: iphone,
   },
 
   {
     id: 5,
     name: "AirPods 2nd generation",
-    price: "1,29,000",
+    price: "20,000",
     category: "AirPods",
-    image: "/images/airpods2.jpg",
+    image: airpords1,
   },
-  {
-    id: 6,
-    name: "AirPods 4nd generation",
-    price: "1,29,000",
-    category: "AirPods",
-    image: "/images/airpods2.jpg",
+
+   {
+    id: 2,
+    name: "iPhone 16 pro",
+    price: "99,900",
+    category: "iPhone",
+    image:iphone2,
   },
 
   {
@@ -52,42 +44,71 @@ const products = [
     name: "MacBook Air",
     price: "99,900",
     category: "Mac",
-    image: "/images/macbookair.jpg",
+    image: mac1,
   },
+
+   {
+    id: 3,
+    name: "iPhone 12 pro",
+    price: "45,000",
+    category: "iPhone",
+    image:iphone3,
+  },
+
+  {
+    id: 4,
+    name: "Apple Watch Series 9",
+    price: "22,000",
+    category: "Watch",
+    image: watch1,
+  },
+
+  {
+    id: 6,
+    name: "AirPods 4nd generation",
+    price: "25,000",
+    category: "AirPods",
+    image: airpords2,
+  },
+
   {
     id: 8,
     name: "iMac",
-    price: "1,34,900",
+    price: "23,900",
     category: "Mac",
-    image: "/images/imac.jpg",
+    image: mac2,
   },
+
   {
     id: 9,
-    name: "iMac",
-    price: "1,34,900",
+    name: "iMac2",
+    price: "34,900",
     category: "Mac",
-    image: "/images/imac.jpg",
+    image: mac3,
   },
+
   {
     id: 10,
     name: "AirPods 3rd generation",
     price: "19,900",
     category: "AirPods",
-    image: "/images/airpods3.jpg",
+    image: airpords3,
   },
+
   {
     id: 11,
     name: "Apple Watch Ultra 2",
     price: "89,900",
     category: "Watch",
-    image: "/images/watchultra2.jpg",
+    image: watch2,
   },
+  
   {
     id: 12,
     name: "Apple Watch SE",
     price: "29,900",
     category: "Watch",
-    image: "/images/watchse.jpg",
+    image: watch3,
   },
 ];
 
