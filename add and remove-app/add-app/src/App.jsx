@@ -29,7 +29,7 @@ export default function DynamicTable() {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4 text-primary">React - Add & Remove Rows</h2>
+      <h2 className="text-center mb-4 text-black">React - Add & Remove Rows</h2>
       <table className="table table-bordered text-center table-hover">
         <thead className="bg-primary text-white">
           <tr>
