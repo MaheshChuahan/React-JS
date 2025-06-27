@@ -1,0 +1,289 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const UserForm = () => {
+  const [user, setUser] = useState({
+    name: '', email: '', password: '', gender: '',
+    courses: [], date: '', status: ''
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setUser(prevUser => ({
+      ...prevUser,
+      email: '',
+      password: ''
+    }));
+  }, []);
+
+  const handleChange = e => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setUser(prev => ({
+        ...prev,
+        courses: checked
+          ? [...prev.courses, value]
+          : prev.courses.filter(c => c !== value)
+      }));
+    } else {
+      setUser(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const existing = JSON.parse(localStorage.getItem('users')) || [];
+    const newUser = { ...user, id: Date.now() };
+    localStorage.setItem('users', JSON.stringify([...existing, newUser]));
+    navigate('/');
+  };
+
+  const courseOptions = [
+    'html', 'css', 'bootstrap', 'js', 'react js',
+    'node js', 'php', 'angular', 'python', 'laravel'
+  ];
+
+  return (
+    <div className="container-fluid py-4" style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh' }}>
+      <div className="row justify-content-center">
+        <div className="col-12 col-lg-8 col-xl-6">
+          <div className="card shadow-lg border-0" style={{ borderRadius: '20px', overflow: 'hidden' }}>
+            <div className="card-header bg-white border-0 py-4" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  <h3 className="text-white mb-0 fw-bold">
+                    <i className="fas fa-user-plus me-2"></i>
+                    Add New User
+                  </h3>
+                  <p className="text-white-50 mb-0 mt-1">Create a new user profile with complete information</p>
+                </div>
+                <button 
+                  className="btn btn-light btn-lg px-4 py-2 fw-semibold"
+                  onClick={() => navigate('/')}
+                  style={{ borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}
+                >
+                  <i className="fas fa-arrow-left me-2"></i>
+                  Back to Dashboard
+                </button>
+              </div>
+            </div>
+
+            <div className="card-body p-4">
+              <form onSubmit={handleSubmit}>
+                <div className="row g-4">
+                  {/* Name Field */}
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        <i className="fas fa-user me-2 text-primary"></i>
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your full name"
+                        className="form-control form-control-lg"
+                        onChange={handleChange}
+                        required
+                        style={{ borderRadius: '12px', border: '2px solid #e9ecef' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email Field */}
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        <i className="fas fa-envelope me-2 text-primary"></i>
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        className="form-control form-control-lg"
+                        value={user.email}
+                        onChange={handleChange}
+                        required
+                        style={{ borderRadius: '12px', border: '2px solid #e9ecef' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Password Field */}
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        <i className="fas fa-lock me-2 text-primary"></i>
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        className="form-control form-control-lg"
+                        value={user.password}
+                        onChange={handleChange}
+                        required
+                        style={{ borderRadius: '12px', border: '2px solid #e9ecef' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Gender Field */}
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        <i className="fas fa-venus-mars me-2 text-primary"></i>
+                        Gender
+                      </label>
+                      <div className="d-flex gap-3 mt-2">
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="gender"
+                            value="male"
+                            onChange={handleChange}
+                            style={{ transform: 'scale(1.2)' }}
+                          />
+                          <label className="form-check-label fw-semibold">
+                            <i className="fas fa-mars me-1 text-info"></i>
+                            Male
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="gender"
+                            value="female"
+                            onChange={handleChange}
+                            style={{ transform: 'scale(1.2)' }}
+                          />
+                          <label className="form-check-label fw-semibold">
+                            <i className="fas fa-venus me-1 text-warning"></i>
+                            Female
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Date Field */}
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        <i className="fas fa-calendar me-2 text-primary"></i>
+                        Date of Birth
+                      </label>
+                      <input
+                        type="date"
+                        name="date"
+                        className="form-control form-control-lg"
+                        onChange={handleChange}
+                        required
+                        style={{ borderRadius: '12px', border: '2px solid #e9ecef' }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Status Field */}
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-2">
+                        <i className="fas fa-toggle-on me-2 text-primary"></i>
+                        Status
+                      </label>
+                      <select
+                        name="status"
+                        className="form-select form-select-lg"
+                        onChange={handleChange}
+                        required
+                        style={{ borderRadius: '12px', border: '2px solid #e9ecef' }}
+                      >
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="unactive">Inactive</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Courses Field */}
+                  <div className="col-12">
+                    <div className="form-group">
+                      <label className="form-label fw-semibold text-dark mb-3">
+                        <i className="fas fa-graduation-cap me-2 text-primary"></i>
+                        Select Courses
+                      </label>
+                      <div className="row g-3">
+                        {courseOptions.map(course => (
+                          <div className="col-md-4 col-lg-3" key={course}>
+                            <div className="form-check p-3 border rounded-3" style={{ 
+                              borderRadius: '12px', 
+                              border: '2px solid #e9ecef',
+                              transition: 'all 0.3s ease'
+                            }}
+                            onMouseOver={(e) => {
+                              e.currentTarget.style.borderColor = '#667eea';
+                              e.currentTarget.style.backgroundColor = '#f8f9ff';
+                            }}
+                            onMouseOut={(e) => {
+                              e.currentTarget.style.borderColor = '#e9ecef';
+                              e.currentTarget.style.backgroundColor = 'transparent';
+                            }}>
+                              <input
+                                className="form-check-input me-3"
+                                type="checkbox"
+                                value={course}
+                                onChange={handleChange}
+                                style={{ transform: 'scale(1.2)' }}
+                              />
+                              <label className="form-check-label fw-semibold text-capitalize">
+                                {course}
+                              </label>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="col-12">
+                    <div className="d-flex justify-content-center mt-4">
+                      <button 
+                        type="submit" 
+                        className="btn btn-primary btn-lg px-5 py-3 fw-bold"
+                        style={{ 
+                          borderRadius: '15px', 
+                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          border: 'none',
+                          boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseOver={(e) => {
+                          e.target.style.transform = 'translateY(-2px)';
+                          e.target.style.boxShadow = '0 12px 35px rgba(102, 126, 234, 0.4)';
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.transform = 'translateY(0)';
+                          e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.3)';
+                        }}
+                      >
+                        <i className="fas fa-save me-2"></i>
+                        Create User Profile
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UserForm;

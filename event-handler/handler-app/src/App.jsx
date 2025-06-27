@@ -20,7 +20,32 @@ const products = [
     name: "iPhone 15 pro",
     price: "79,500",
     category: "iPhone",
+<<<<<<< HEAD
     image: iphone,
+=======
+    image: "/images/iphone-1.avif",
+  },
+   {
+    id: 2,
+    name: "iPhone 16 pro",
+    price: "1,44,900",
+    category: "iPhone",
+    image: "/images/iphone-2.avif",
+  },
+   {
+    id: 3,
+    name: "iPhone 12 pro",
+    price: "1,44,900",
+    category: "iPhone",
+    image: "/images/iphone-3.avif",
+  },
+  {
+    id: 4,
+    name: "Apple Watch Series 9",
+    price: "41,999",
+    category: "Watch",
+    image: "/images/watch-1.avif",
+>>>>>>> master
   },
 
   {
@@ -28,6 +53,7 @@ const products = [
     name: "AirPods 2nd generation",
     price: "20,000",
     category: "AirPods",
+<<<<<<< HEAD
     image: airpords1,
   },
 
@@ -37,6 +63,16 @@ const products = [
     price: "99,900",
     category: "iPhone",
     image:iphone2,
+=======
+    image: "/images/airpords-1.avif",
+  },
+  {
+    id: 6,
+    name: "AirPods 4nd generation",
+    price: "1,29,000",
+    category: "AirPods",
+    image: "/images/airpords-2.avif",
+>>>>>>> master
   },
 
   {
@@ -44,7 +80,11 @@ const products = [
     name: "MacBook Air",
     price: "99,900",
     category: "Mac",
+<<<<<<< HEAD
     image: mac1,
+=======
+    image: "/images/mac-1.avif",
+>>>>>>> master
   },
 
    {
@@ -76,7 +116,11 @@ const products = [
     name: "iMac",
     price: "23,900",
     category: "Mac",
+<<<<<<< HEAD
     image: mac2,
+=======
+    image: "/images/mac-2.avif",
+>>>>>>> master
   },
 
   {
@@ -84,7 +128,11 @@ const products = [
     name: "iMac2",
     price: "34,900",
     category: "Mac",
+<<<<<<< HEAD
     image: mac3,
+=======
+    image: "/images/mac-3.avif",
+>>>>>>> master
   },
 
   {
@@ -92,7 +140,11 @@ const products = [
     name: "AirPods 3rd generation",
     price: "19,900",
     category: "AirPods",
+<<<<<<< HEAD
     image: airpords3,
+=======
+    image: "/images/airpords-3.avif",
+>>>>>>> master
   },
 
   {
@@ -100,7 +152,11 @@ const products = [
     name: "Apple Watch Ultra 2",
     price: "89,900",
     category: "Watch",
+<<<<<<< HEAD
     image: watch2,
+=======
+    image: "/images/watch-2.avif",
+>>>>>>> master
   },
   
   {
@@ -108,7 +164,11 @@ const products = [
     name: "Apple Watch SE",
     price: "29,900",
     category: "Watch",
+<<<<<<< HEAD
     image: watch3,
+=======
+    image: "/images/watch-3.avif ",
+>>>>>>> master
   },
 ];
 
